@@ -1,0 +1,4 @@
+<image-cropper [imageChangedEvent]="data" [maintainAspectRatio]="true" [aspectRatio]="1 / 1" [resizeToWidth]="128"
+    format="png/svg/jpg" (imageCropped)="imageCropped($event)">
+</image-cropper>
+<button mat-button mat-flat-button class="color" (click)="uploadpic()">Upload</button>

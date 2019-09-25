@@ -1,0 +1,81 @@
+<!-- /***************************************************************************************************** -->
+<!-- Purpose -fundoonotes 
+  file    - login.component.html 
+  autho0r  - Vaibhaw Tikhile <vaibhawatikhile@gmail.com> 
+  version - 1.0
+  since   - 25/04/2019
+  **************************************************************************************************/ -->
+
+<div fxFlex="100" fxLayoutAlign="center center" fxLayout.xs="column" class="outer">
+  <mat-card fxFlex.lg="35" fxFlex.md="40" fxFlex.sm="90" class="center1">
+    <div fxLayoutAlign="center" class="header">
+      <mat-card-header>
+        <mat-card-title class="p">FundooNotes</mat-card-title>
+      </mat-card-header>
+    </div>
+    <mat-card-content>
+      <div fxLayout="column" fxLayoutGap="15px">
+        <div fxFlex="25" fxLayoutAlign="center" class="subtitle1"> Sign in</div>
+        <div fxFlex="25" fxLayoutAlign="center" class="subtitle2"> Use your Fundoo Acount</div>
+        <div fxLayout="column" fxflex="80" fxLayoutAlign="space-around center">
+          <div  class="text">
+            <mat-form-field  appearance="outline" class="input">
+              <mat-label>Email</mat-label>
+              <mat-error *ngIf="email.invalid">{{emailError()}}</mat-error>
+              <input matInput  [(ngModel)]="login.email" [formControl]="email">
+            </mat-form-field>
+            
+          </div>
+          <div class="password">
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <mat-error *ngIf="password.invalid">{{passwordError()}}</mat-error>
+              <input matInput [(ngModel)]="login.password" [formControl]="password" [type]="hide ? 'text':'password'">
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+             </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="column" fxLayoutGap="40px">
+        <div><button mat-button color="primary" routerLink='/forgot' class="outline">Forgot email?</button>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between start">
+          <div>
+            <button mat-button color="primary" routerLink='/register'class="outline" >Create account</button>
+          </div>
+          <div>
+            <mat-card-actions class="butt">
+              <button mat-raised-button color="primary" (click)="submit()" [disabled]="emailError()!='' || passwordError()!=''" class="button">Next </button>
+            </mat-card-actions>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <div class="service" *ngIf="services.length > 0" fxLayoutGap='10%' fxFlex.lg="35" fxFlex.md="40" fxFlex.sm="90">
+
+    <div *ngFor="let index of services" class="both">
+      <mat-card [ngClass]="productId==index.id ? 'selected':'notSelected' ">
+
+        <mat-card class="insideMat">
+          <div>Price: ${{index.price}} per Month</div>
+          <div color="col">{{index.name | uppercase}}</div>
+          <div>
+            <ul>
+              <li>${{index.price}}/Month</li>
+              <li>{{index.description}}</li>
+
+            </ul>
+          </div>
+        </mat-card>
+
+        <div class="message" *ngIf="productId==index.id">Selected</div>
+        <div class="message" *ngIf="productId!=index.id">Add to Cart</div>
+      </mat-card>
+    </div>
+
+
+
+
+  </div>
+</div>

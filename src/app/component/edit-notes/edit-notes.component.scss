@@ -1,0 +1,16 @@
+.textArea{
+    width:43vw; 
+    border-color: transparent;  
+    outline: none;
+    overflow: hidden;
+}
+.textArea::-webkit-input-placeholder {
+    color: #81878c;
+    font-weight: lighter;
+    font-size: 18px;
+    font-family:Arial, Helvetica, sans-serif;
+    }
+    .mat-icon-button{
+        outline: none;
+        border-color: transparent;
+    }

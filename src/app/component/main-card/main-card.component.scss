@@ -1,0 +1,87 @@
+  .outer{
+    // min-height: -webkit-fill-available;  
+    // min-width: -webkit-fill-available
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+}
+  mat-progress-bar{
+    position: absolute;
+     z-index: -1;
+     margin-top: 2px;
+     width: 50%;
+    }
+  
+    // ::ng-deep .mat-app-background{
+    //   background-color: transparent;
+    // }
+    .progressFirstSteps{
+    width: -webkit-fill-available;
+    margin-top: 30px;
+    mat-icon{
+      margin-top: -17px;
+  margin-left: 5%;
+
+}
+    .steps{
+      font-size: x-small;
+      font-family: serif;
+       font-weight: 600;
+      .sign{
+        color: #ffce12;
+      }
+    
+    }
+    .chip{
+        color: white;
+        background-color: #ffce12;
+        font-size: larger;
+        }
+
+  }
+  .shop{
+    margin-top: 30px;
+      font-size: larger;
+      font-weight: 600;
+      font-family: sans-serif;
+      padding-left: 30px;
+     
+  
+   }
+   .condition{
+    padding-left: 30px;
+    font-size: x-small;
+    font-weight: lighter;
+    .privacy{
+      color: #008AFA;
+    }
+   }
+   .matcard{
+     margin-left: 72px;
+     margin-top: 23px;
+   }
+   .card{
+    background-color: #949494;
+    width: fit-content;
+    padding: 8px;
+    border-radius: 8px;
+    color: white;
+    max-width: 100px;
+   }
+   .details{
+    .name{
+      color: #006ABC;
+      font-weight: 600;
+      // margin-left: 10%
+    }
+  }
+  .price{
+    .name{
+      color: rgb(0, 0, 0);
+      font-weight: 600;
+    }
+    .rate{
+      color: #006ABC;
+  
+    }
+  }

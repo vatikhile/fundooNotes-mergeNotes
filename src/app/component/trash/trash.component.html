@@ -1,0 +1,28 @@
+<div fxLayout="row" class="Card" fxLayoutAlign="center" class="card_div">
+  <div fxLayout="row wrap" fxLayoutAlign="center" fxFlex="70" fxLayoutGap="15px" class="main">
+    <div *ngFor="let items of addNote | orderOf" fxLayout="row" fxFlex="30" class="111">
+      <div *ngIf="items.isArchived===false" class="matShade" fxLayout="row" fxFlex="90" class="ssf6">
+        <!-- <div class="122"> -->
+        <mat-card [ngClass]=" direction =='column' ? 'matpad3':'matpad'"
+          [ngStyle]="{ 'background-color': items.color }">
+          <!-- <mat-card-content>  -->
+          <div (click)="openDialog(items)">
+            <div class="bold" fxLayout="column">{{items.title}}</div>
+            <div fxLayout="column">
+              <p>{{items.description}}</p>
+            </div>
+          </div>
+          <div>
+            <button mat-icon-button [matMenuTriggerFor]="morelist">
+              <mat-icon class="icon">more_vert</mat-icon>
+            </button>
+            <mat-menu #morelist="matMenu">
+              <button mat-menu-item class="button" (click)="deleteNote(items.id)">Delete Note Forever</button>
+              <button mat-menu-item class="button">Restore</button>
+            </mat-menu>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

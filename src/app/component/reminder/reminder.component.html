@@ -1,0 +1,32 @@
+<div class="mainCard" fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+  <div *ngFor="let items of addNote" fxLayoutGap="2px">
+
+    <mat-card class="smallcard" [ngStyle]="{ 'background-color': items.color }">
+      <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="10px">
+        <div (click)="openDialog(items)">{{items.title}}</div>
+        <div fxLayout="column" fxLayoutAlign="space-around start" fxLayoutGap="10px">
+          <div (click)="openDialog(items)">{{items.description}}</div>
+        </div>
+        <div *ngIf="items.reminder.length > 0">
+          <mat-chip-list>
+
+            <mat-chip> <img src="../../../assets/images/clock.svg"> {{items.reminder | date:'MMM d, y, h:mm a'}}
+            </mat-chip>
+          </mat-chip-list>
+
+        </div>
+        <div *ngIf="items.label.length > 0">
+          <mat-chip-list>
+            <mat-chip>{{items.label}}</mat-chip>
+          </mat-chip-list>
+
+        </div>
+      </div>
+      <div>
+
+        <app-icon (remindChange)="updateReminder(items,$event)" class="appicon"></app-icon>
+      </div>
+    </mat-card>
+
+  </div>
+</div>

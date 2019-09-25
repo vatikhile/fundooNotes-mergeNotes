@@ -1,0 +1,28 @@
+
+<!-- for displaying notes i.e title and description on the matcard -->
+<div fxLayout="row" class="Card" fxLayoutAlign="center" fxFlex="100" class="card_div">
+
+  <div fxLayout="{{direction}} wrap" fxLayoutAlign="center" fxFlex="80" fxLayoutGap="25px" class="main">
+    <div *ngFor="let items of addNote | orderOf " class="111">
+      <div *ngIf="items.isArchived===true" class="matShade" fxLayout="row" fxFlex="88" class="ssf6">
+        <!-- <div class="122"> -->
+        <mat-card [ngClass]=" direction =='column' ? 'matpad3':'matpad'" 
+          [ngStyle]="{ 'background-color': items.color }">
+          <!-- <mat-card-content>  -->
+          <div (click)="openDialog(items)">
+
+            <div class="bold" fxLayout="column">{{items.title}}</div>
+            <div fxLayout="column">
+              <p>{{items.description}}</p>
+            </div>
+          </div>
+          <div fxLayout="column" fxLayoutAlign="end">
+            <app-icon class="icon_hover" (countChange)="changeColor(items,$event)"
+              (archiveNote)="archiveNote(items,$event)"></app-icon>
+          </div>
+          <!-- </mat-card-content> -->
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

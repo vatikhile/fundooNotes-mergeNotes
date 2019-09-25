@@ -1,0 +1,48 @@
+
+.Card{
+    display: flex;
+     background-color: white;
+
+}
+.mat-card{
+
+    border-radius: 12px;
+}
+.mat-card:hover{
+.icon_hover{
+    visibility: visible;
+}
+}
+.icon_hover
+{
+    visibility: hidden;
+}
+.matpad3{
+    margin-top: 14px;
+    width: 46vw;
+    border-radius: 12px;
+    border-color: transparent;  
+    outline: none;
+    background-color: white;
+
+}
+.matpad{
+    max-width: 22vw;
+    margin-top: 30px;
+    border-radius: 12px;
+    border-color: transparent;  
+    outline: none;
+    background-color: white;
+}
+.bold{
+    word-wrap:break-word;
+}
+.light{
+    word-wrap:break-word; 
+}
+.mainCard{
+    height: 100vh;
+    width: 100vw;
+}
+
+

@@ -1,0 +1,180 @@
+<!-- for displaying the toolbar in dashbaoard -->
+<div fxLayout="column" fxLayoutAlign="end" fxFlex="100" class="main">
+  <mat-toolbar class="mat-toolbar">
+    <mat-toolbar-row fxLayoutGap="10px">
+      <div fxLayout="row" fxLayoutGap="10px" class="12">
+        <div fxFlex="50">
+          <button mat-button (click)="sidenav.toggle()" class="mat-icon-button">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+        <div fxFlex="50">
+          <img mat-img src="https://ssl.gstatic.com/keep/keep.ico" />
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="start center" fxFlex="73" fxLayoutGap="4%">
+        <div>
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex="73" fxLayoutGap="5%" class="13">
+            <div class="name">
+              <span class="title">{{header}}</span>
+            </div>
+            <div>
+              <mat-card fxLayoutAlign="center center" class="searchInput">
+                <button mat-icon-button class="searchButton">
+                  <mat-icon>search</mat-icon>
+                </button>
+                <input mat-input class="searchInput" routerLink='/search' [(ngModel)]="searchContent" (keyup)="onKey()"
+                  placeholder="Search">
+                  <button  *ngIf="searchContent!=undefined" mat-icon-button class="search" (click)="searchc()">
+                    <mat-icon >close</mat-icon>
+                  </button>
+                <!-- ng-model="searchText" -->
+                <!-- <app-all-notes [childMessage]="searchText"></app-all-notes> -->
+              </mat-card>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div fxLayout="row" fxLayoutAlign="start center" fxFlex="20" fxLayoutGap="7px" class="15">
+            <div>
+              <button mat-icon-button routerLink="/addNotes">
+                <mat-icon>refresh</mat-icon>
+              </button>
+            </div>
+            <div> <button mat-icon-button *ngIf="toggle==true" (click)="changeView()">
+                <img src="../../../assets/list.svg">
+              </button>
+              <div> <button mat-icon-button *ngIf="toggle==false" (click)="changeView1()">
+                  <img src="../../../assets/grid.svg">
+                </button>
+              </div>
+            </div>
+            <div>
+              <button mat-icon-button (click)="mainCartOpen()"><mat-icon>shopping_cart</mat-icon> </button>
+              <button fxFlex="100px"  mat-flat-button (click)="mainCartOpen()" color="accent" fxLayout="row" fxLayoutAlign="center center">Merge Notes </button>
+          </div>
+          <!-- <div> </div> -->
+          </div>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center end">
+          <button style="outline: none;" mat-icon-button [matMenuTriggerFor]="menu">
+            <div mat-card-avatar
+              [ngStyle]="{'background-image': 'url('+img+')','background-size':'cover', 'height':'40px','width':'40px'}"
+              class="img1"></div>
+          </button>
+
+        </div>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-divider></mat-divider>
+  <div fxLayout="column" fxLayoutAlign="start start" class="scroll">
+    <!-- Open the sidenav bar after click on menu button in the dashboard -->
+    <div fxLayout="column" fxLayoutAlign="start" fxFlex="30">
+      <mat-sidenav-container>
+        <mat-sidenav fxLayout="column" fxFlex="100" #sidenav mode="side" class="sidenav">
+          <div fxLayout="column" fxFlex="100" fxLayoutGap="10px">
+            <div>
+              <div fxLayout="column" fxLayoutAlign="start-between" fxFlex="100" class="20">
+                <div>
+                  <button mat-raised-button fxFlex="97" (click)="noteButton()">
+                    <div fxLayout="row" fxLayoutGap="30px" fxFlex="100">
+                      <mat-icon>lightbulb_outline</mat-icon>
+                      <span> Note</span>
+                    </div>
+                  </button>
+                </div>
+                <div>
+                  <button mat-raised-button fxFlex="97" (click)="reminder()">
+                    <div fxLayout="row" fxLayoutGap="30px" fxFlex="100">
+                      <mat-icon>notifications_none</mat-icon>
+                      <span> Reminders</span>
+                    </div>
+                  </button>
+                </div>
+                <div>
+                  <mat-divider></mat-divider>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="start" fxFlex="80">
+                  <span class="name">LABELS</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div fxLayout="column" fxLayoutAlign="start-between" fxFlex="100">
+                <div>
+                  <div *ngFor="let item of addLabels | orderOf">
+                    <span><button mat-raised-button fxFlex="97" (click)="labelOpen(item)">
+                        <div fxLayout="row" fxLayoutGap="30px" fxFlex="100">
+                          <div>
+                            <mat-icon> <img src="../../../assets/outline-label-24px.svg"></mat-icon>
+                          </div>
+                          <div style="margin:25%">{{item.label}}</div>
+                        </div>
+                      </button>
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <button mat-raised-button fxFlex="97" (click)="dialogOpen()">
+                    <div fxLayout="row" fxLayoutGap="30px" fxFlex="100">
+                      <img src="../../../assets/outline-create-24px.svg">
+                      <span style="margin:25%">edit label</span>
+                    </div>
+                  </button>
+                </div>
+                <mat-divider></mat-divider>
+                <div>
+                  <mat-divider class="divider"></mat-divider>
+                  <button mat-raised-button fxFlex="97" (click)="archive()">
+                    <div fxLayout="row" fxLayoutGap="30px" fxFlex="100">
+                      <img src="../../../assets/archive.svg">
+                      <span style="margin:27%">Archive</span>
+                    </div>
+                  </button>
+                </div>
+                <div>
+                  <button mat-raised-button fxFlex="97" (click)="trash()">
+                    <div fxLayout="row" fxLayoutGap="30px" fxFlex="97">
+                      <img src="../../../assets/menuTrash.svg">
+                      <span style="margin:30%">Trash</span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-sidenav>
+        <mat-sidenav-content class="content">
+          <router-outlet></router-outlet>
+          <!-- <app-add-note></app-add-note>
+            </div>
+       
+              <div>
+              <app-all-notes></app-all-notes>
+            </div>
+            <div><app-archive></app-archive></div> -->
+        </mat-sidenav-content>
+      </mat-sidenav-container>
+    </div>
+  </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+  <mat-menu class="menu" #menu="matMenu">
+    <div>
+      <mat-card-header>
+        <div mat-card-avatar
+          [ngStyle]="{'background-image': 'url('+img+')','background-size':'cover', 'height':'60px','width':'60px'}"
+          class="img2" (click)=image.click()>
+        </div>
+        <mat-card-title class="text_color">&nbsp;{{firstName}} {{lastName}}</mat-card-title>
+        <mat-card-subtitle>{{email}}</mat-card-subtitle>
+      </mat-card-header><br>
+      <mat-divider></mat-divider>
+      <div fxLayout="row" fxLayoutAlign="end">
+        <input type="file" class="fileSelect" (change)=profileImage($event) #image>
+        <button mat-flat-button class="color" routerLink="/login" (click)="onSignout()">Sign out</button>
+      </div>
+    </div>
+  </mat-menu>
+</div>

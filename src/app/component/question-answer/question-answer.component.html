@@ -1,0 +1,246 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
+
+<div fxLayout="column" fxLayoutAlign="start" fxFlex="100" class="abc">
+
+    <div fxLayout="column" fxLayoutGap="20px" class="2">
+        <div fxLayout="row" fxLayoutGap="70%">
+            <div fxLayout=column fxLayoutAlign="space-evenly" *ngFor="let items of notes">
+                <div class="title"> {{items.title}}</div>
+                <div class="description">{{items.description}}</div>
+            </div>
+            <div fxLayout="column" fxLayoutAlign="space-evenly">
+                <button mat-button class="button" routerLink="/addNotes">close</button>
+            </div>
+        </div>
+        <div>
+            <mat-divider></mat-divider>
+
+        </div>
+        <!-- new question ask display -->
+        <div *ngIf="value==undefined">
+            <div class="titl">Ask a Question</div>
+            <div class="tex">
+                <p> Make sure what you’re asking is unique, concise, and phrased like a question.</p>
+            </div>
+
+
+            <mat-divider></mat-divider>
+
+
+            <div fxLayout="row" fxLayoutAlign="center start" fxLayoutGap="50px">
+                <!-- <div *ngIf="value==undefined"> -->
+                <div [froalaEditor] fxFlex="62" [(froalaModel)]="editorContent"></div>
+                <button mat-button class="submit1" (click)="question()">Ask</button>
+            </div>
+            <mat-divider></mat-divider>
+        </div>
+    </div>
+
+
+    <!-- asked question display -->
+
+    <div *ngIf="value!= undefined">
+        <h2>Asked Questions</h2>
+        <div fxLayout='column'>
+            <div fxLayout='row' fxLayout.xs='column'>
+                <div fxLayout='row'>
+
+                    <div *ngIf="img!=undefined">
+                        <button style="outline: none;" mat-icon-button>
+                            <div mat-card-avatar
+                                [ngStyle]="{'background-image': 'url('+img+')','background-size':'cover', 'height':'40px','width':'40px'}"
+                                class="img1"></div>
+                        </button>
+                    </div>
+
+                    <div *ngIf="img==undefined" class="image1" fxLayout='row' fxLayoutAlign="center center"
+                        class="image1">
+                        {{value.user.firstName | slice:0:1 |uppercase}}
+                    </div>
+                    <div fxLayout=row class="nameDate"> {{value.user.firstName}} {{value.user.lastName}}
+                        &nbsp; <div fxHide.xs=true>{{value.createdDate | date:'medium'}} </div>
+                    </div>
+                </div>
+                <div class="icon" fxLayout='row' fxFlexOffset='5%' fxFlexOffset.xs='0%' fxLayoutAlign.xs="end center"
+                    fxLayoutAlign="space-around start" fxLayoutGap='8%' fxLayoutGap.xs='1%'>
+                    <div (click)="showEditorId=true">
+                        <mat-icon>reply</mat-icon>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div fxLayout='row' class="arrowQuestion" fxLayoutGap='2%' fxLayoutAlign="start center">
+            <div>
+                <mat-icon>send</mat-icon>
+            </div>
+            <div class="innerhtml" innerHTML="{{value.message}}"></div>
+        </div>
+    </div>
+
+    <!-- reply the answer to question -->
+    <div *ngIf="showEditorId" fxLayout="row" FxLayoutAlign="center center">
+
+        <div [froalaEditor] fxFlex="62" [(froalaModel)]="editorContent">
+        </div>
+        <div fxLayout='column' fxLayoutAlign='space-between'>
+            <div> <button mat-icon-button (click)="showEditorId=false">
+                    <mat-icon>close</mat-icon>
+                </button></div>
+            <div class="ask">
+                <button mat-raised-button class="submit" (click)="reply(value.id)">SUBMIT-ANSWER</button>
+            </div>
+        </div>
+    </div>
+    <!-- answer display -->
+    <div *ngIf="!showFirstReply" class="showFirstReply" fxLayout="row" fxLayoutAlign="end center"
+        (click)="showFirstReply=true">
+        <mat-icon>expand_more</mat-icon> View reply
+    </div>
+    <div *ngIf="showFirstReply" class="showFirstReply" fxLayout="row" fxLayoutAlign="end center"
+        (click)="showFirstReply=false">
+        <mat-icon>expand_less</mat-icon> Hide reply
+    </div>
+    <div *ngIf="showFirstReply &&  AnswerArray ?.length >0" class="answerDisplay">
+        <div class="userAnswer" *ngFor="let index of  AnswerArray">
+            <div *ngIf="index.parentId==parentId && index.isApproved==true" fxLayout='column'>
+                <div fxLayout='row' fxLayout.xs='column'>
+                    <div fxLayout='row'>
+                        <div *ngIf="index.user.imageUrl!=undefined" class="imageAnswer"
+                            [ngStyle]="{'background-image': 'url(' + imgUrl+index.user.imageUrl+ ')'}"></div>
+                        <div *ngIf="index.user.imageUrl==undefined" class="image1">
+                            {{index.user.firstName | slice:0:1 |uppercase}}
+                        </div>
+                        <div fxLayout=row class="nameDate"> {{index.user.firstName}} {{index.user.lastName}}
+                            &nbsp; <div fxHide.xs=true>{{index.createdDate | date:'medium'}}</div>
+                        </div>
+                    </div>
+                    <div class="icon" fxLayout='row' fxFlexOffset='5%' fxFlexOffset.xs='0%'
+                        fxLayoutAlign.xs="end center" fxLayoutAlign="space-around start" fxLayoutGap='8%'>
+                        <div (click)="setId(index)">
+                            <mat-icon>reply</mat-icon>
+                        </div>
+
+
+                    </div>
+
+                    <div fxLayout='row' class="arrowQuestion" fxLayoutGap='2%' fxLayoutAlign="start center">
+
+                        <div class="innerhtmlAnswer" innerHTML="{{index.message}}">
+                        </div>
+                    </div>
+                    <!-- reply the answer to answer -->
+                    <div *ngIf="showId == index.id">
+                        <div> <button mat-button (click)="showId=''">close</button></div>
+                        <div [froalaEditor] [(froalaModel)]="editorContent">
+                        </div>
+                        <div fxLayout='row' fxLayoutAlign='end'>
+                            <div class="ask">
+                                <button mat-raised-button class="submit" (click)="replyIt(index.id)"
+                                    (click)="showId=''">SUBMIT-ANSWER</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- first reply display  -->
+                    <div *ngIf="this.showSecondId != index.id" class="showFirstReply" fxLayout="row"
+                        fxLayoutAlign="end center" (click)="showSecondReplyMethod(index.id)">
+                        <mat-icon>expand_more</mat-icon> View reply
+                    </div>
+                    <div *ngIf="this.showSecondId == index.id" class="showFirstReply" fxLayout="row"
+                        fxLayoutAlign="end center" (click)="hideSecondReplyMethod(index.id)">
+                        <mat-icon>expand_less</mat-icon> Hide reply
+                    </div>
+                    <div *ngIf="showSecondReply && this.showSecondId == index.id" class="firstReply">
+                        <div *ngFor="let user1 of  AnswerArray">
+                            <div *ngIf="user1.parentId==index.id  && user1.isApproved == true">
+                                <div fxLayout='row' fxLayout.xs='column'>
+                                    <div fxLayout='row'>
+                                        <div *ngIf="user1.user.imageUrl!=undefined" class="imageAnswer"
+                                            [ngStyle]="{'background-image': 'url(' + imgUrl+user1.user.imageUrl+ ')'}">
+                                        </div>
+                                        <div *ngIf="user1.user.imageUrl==undefined" class="image1">
+                                            {{user1.user.firstName | slice:0:1 |uppercase}}
+                                        </div>
+                                        <div fxLayout=row class="nameDate"> {{user1.user.firstName}}
+                                            {{user1.user.lastName}}
+                                            &nbsp;<div fxHide.xs=true> {{user1.createdDate | date:'medium'}} </div>
+                                        </div>
+                                    </div>
+                                    <div class="icon" fxLayout='row' fxFlexOffset='5%'
+                                        fxLayoutAlign="space-around start" fxLayoutAlign.xs="end center"
+                                        fxLayoutGap='8%' fxLayoutGap.xs='1%'>
+                                        <div (click)="setSecondId(user1)">
+                                            <mat-icon>reply</mat-icon>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div fxLayout='row' class="arrowQuestion" fxLayoutGap='2%' fxLayoutAlign="start center">
+
+                                    <div class="innerhtmlAnswer" innerHTML="{{user1.message}}">
+                                    </div>
+                                </div>
+                                <!-- second reply ask -->
+
+                                <div *ngIf="secondId == user1.id">
+                                    <div> <button mat-button (click)="secondId=''">close</button></div>
+                                    <div [froalaEditor] [(froalaModel)]="editorContent">
+                                    </div>
+                                    <div fxLayout='row' fxLayoutAlign='end'>
+                                        <div class="ask">
+                                            <button mat-raised-button class="submit" (click)="replyIt(user1.id)"
+                                                (click)="secondId=''">SUBMIT-ANSWER</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- second reply display -->
+
+                                <div class="secondReply">
+                                    <div *ngFor="let user2 of  AnswerArray">
+                                        <div *ngIf="user2.parentId==user1.id && user2.isApproved == true">
+                                            <div fxLayout='row' fxLayout.xs='column'>
+                                                <div fxLayout='row'>
+                                                    <div *ngIf="user2.user.imageUrl!=undefined" class="imageAnswer"
+                                                        [ngStyle]="{'background-image': 'url(' + imgUrl+user2.user.imageUrl+ ')'}">
+                                                    </div>
+                                                    <div *ngIf="user2.user.imageUrl==undefined" class="image1"
+                                                        fxLayout='row' fxLayoutAlign="center center">
+                                                        {{user2.user.firstName | slice:0:1 |uppercase}}
+                                                    </div>
+                                                    <div fxLayout=row class="nameDate"> {{user2.user.firstName}}
+                                                        {{user2.user.lastName}}
+                                                        &nbsp;<div fxHide.xs='true'>
+                                                            {{user2.createdDate | date:'medium'}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div fxLayout='row' class="arrowQuestion" fxLayoutGap='2%'
+                                                fxLayoutAlign="start center">
+
+                                                <div class="innerhtmlAnswer" innerHTML="{{user2.message}}">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

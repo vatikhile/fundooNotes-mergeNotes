@@ -1,0 +1,33 @@
+<div fxFlex="100" fxLayoutAlign="center center" fxLayout.xs="column" fxLayoutGap="20px" style="height:100vh">
+  <mat-card fxFlex.lg="35" fxFlex.md="40" fxFlex.sm="90" class="center1">
+    <div fxLayoutAlign="center" class="header">
+      <mat-card-header>
+        <mat-card-title>FundooNotes</mat-card-title>
+      </mat-card-header>
+    </div>
+    <mat-card-content>
+      <div fxLayout="column" fxLayoutGap="15px">
+        <div fxFlex="25" fxLayoutAlign="center" class="subtitle1"> Find your email</div>
+        <div fxFlex="25" fxLayoutAlign="center" class="subtitle2"> Enter your phone number or recovery email </div>
+        <div fxLayout="column" fxflex="50" fxLayoutAlign="center center">
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-error *ngIf="email.invalid">{{emailError()}}</mat-error>
+              <mat-label>Email</mat-label>
+              <input matInput [(ngModel)]="forget.email" [formControl]="email">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center">
+        <div>
+
+          <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="submit()" class="button">Next </button>
+          </mat-card-actions>
+
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

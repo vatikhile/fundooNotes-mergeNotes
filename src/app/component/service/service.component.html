@@ -1,0 +1,23 @@
+<div>
+  <mat-toolbar  fxLayout="row" fxLayoutAlign="space-around center" >
+    <div>
+      {{data.service}} Pack Details
+    </div>
+    <div>
+        ${{data.price}} /Month
+    </div>
+  </mat-toolbar>
+  <div fxLayout="column" fxLayoutAlign="space-between none">
+  <div class="tab" >
+  <mat-tab-group mat-align-tabs="start">
+      <mat-tab label="Feature1">Ability to add title</mat-tab>
+      <mat-tab label="Feature2">Ability to add description</mat-tab>
+      <mat-tab *ngIf="data.name=='advance'" label="Feature3">Ability to Add reminder,change color,collaborate the user, Label, Pin Unpin the card & card To Archive</mat-tab>
+    </mat-tab-group>
+  </div>
+  <div class="button" fxLayout="row" fxLayoutAlign="space-between end" >
+      <button mat-raised-button (click)="close()">Remove</button>
+      <button mat-raised-button (click)="Checkout()">Proceed to Checkout</button>
+  </div>
+  </div>
+  </div>

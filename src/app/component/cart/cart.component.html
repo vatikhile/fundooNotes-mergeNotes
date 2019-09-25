@@ -1,0 +1,91 @@
+<div class="outer">
+<mat-toolbar>
+  <div fxFlexOffset="10">
+    fundooNotes
+  </div>
+</mat-toolbar>
+
+
+<div fxLayout="column" fxLayoutAlign="space-around center" class="mainService">
+  <div class="fundooService">
+  Which fundooNotes service package do you want?
+  </div>
+  <div class="serviceAsk" *ngIf="serviceArray.length >0"   fxLayoutGap='10%' fxLayoutGap.xs='5%'>
+    <div class="wholeMatCard1" (click)="serviceOpen('Advance')">
+      <div>
+        <mat-card class="backMatCard1">
+          <div class="add">
+            ADD TO CART
+          </div>
+        </mat-card>
+      </div>
+      <div>
+        <mat-card  class="upperMatCard1">
+
+          <div fxLayout="column">
+            <div class="price">
+              price: ${{serviceArray[0].price}} per month
+            </div>
+            <div class="serviceName">
+                {{serviceArray[0].name | uppercase}}
+            </div>
+            <div>
+              <ul>
+                <li>
+                  ${{serviceArray[0].price}}/month
+
+                </li>
+                <li>
+                    {{serviceArray[0].description}}
+
+                </li>
+              </ul>
+
+            </div>
+          </div>
+
+        </mat-card>
+      </div>
+    </div>
+    <div class="wholeMatCard2" (click)="serviceOpen('basic')">
+      <div>
+        <mat-card class="backMatCard2">
+          <div class="add">
+            ADD TO CART
+          </div>
+        </mat-card>
+      </div>
+      <div>
+        <mat-card class="upperMatCard2">
+          <div fxLayout="column">
+            <div class="price">
+                price: ${{serviceArray[1].price}} per month
+            </div>
+            <div class="serviceName">
+                {{serviceArray[1].name | uppercase}}
+            </div>
+            <div>
+              <ul>
+                <li>
+                    ${{serviceArray[1].price}}/month
+
+                </li>
+                <li>
+                    {{serviceArray[1].description}}
+
+                </li>
+              </ul>
+
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button mat-button class="signIn" (click)="signIn()"> Sign in Instead</button>
+  </div>
+
+</div>
+
+</div>

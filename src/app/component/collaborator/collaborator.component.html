@@ -1,0 +1,76 @@
+<div fxLayout="column" fxLayoutAlign="center start" class="width">
+  <div class="dialog" fxLayout="row" fxFlex="100" fxLayoutAlign="start start" fxLayoutGap="10px">
+    <!-- <div fxLayout="column"> -->
+    <div>
+      <span class="text">
+        Collaborators
+      </span>
+      <mat-divider></mat-divider><br>
+    </div>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="start">
+    <div fxLayout="row" fxLayoutAlign="start">
+      <button style="outline: none;" mat-icon-button>
+        <div mat-card-avatar
+          [ngStyle]="{'background-image': 'url('+img+')','background-size':'cover', 'height':'40px','width':'40px'}"
+          class="img1"></div>
+      </button> &nbsp;
+      <div fxLayout="column" fxLayoutGap="2px">
+        <div>
+          <span class="text">{{first}} {{last}} </span>(owner)
+        </div>
+        <div>{{email1}}</div>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="start">
+    <div *ngFor="let item of collaborators" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
+      <button mat-mini-fab mat-icon-button>
+        <mat-icon>account_circle</mat-icon>
+      </button>&nbsp;
+      <div fxLayout="column" fxLayoutGap="2px">
+        <div><span class="text">{{item.firstName}} {{item.lastName}}
+          </span> </div>
+        <div>{{item.email}}</div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end" fxFlex="100">
+        <!-- <div fxLayout="column" fxLayoutAlign="end"> -->
+        <button mat-button (click)="deleteCollab(id)">
+          <mat-icon class="left">close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div fxLayout="row" fxLayoutAlign="space-between end">
+      <div>
+        <button mat-mini-fab class="color" mat-icon-button>
+          <mat-icon>account_circle</mat-icon>
+        </button>&nbsp;
+      </div>
+      <div>
+        <input type="text" class="input" (keyup)="searchList()" placeholder="Person to share with" [value]="option"
+          matInput [formControl]="searchvalue" [matAutocomplete]="auto">
+      </div>
+    </div>
+    <div>
+      <mat-autocomplete #auto="matAutocomplete">
+        <div fxLayout="column">
+          <mat-option *ngFor="let option of search" [value]="option.email">
+            {{option.firstName}} {{option.lastName}} {{option.email}}
+          </mat-option>
+        </div>
+      </mat-autocomplete>
+    </div>
+  </div>
+  &nbsp;
+  <mat-divider></mat-divider>
+  <div fxLayout="row" fxLayoutAlign="end center" class="margin">
+    <div>
+      <button mat-button (click)="closeDialog()">Cancel</button>
+    </div>
+    <div>
+      <button mat-button (click)="addCollab(id)">Save</button>
+    </div>
+  </div>
+</div>

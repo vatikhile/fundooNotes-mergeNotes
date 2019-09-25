@@ -1,0 +1,65 @@
+<div fxLayout="column" FxLayoutGap="20px" fxFlexLayout="space-between start" class="abc">
+  <div>
+    <!-- first field on the dialog box for add the new note after click on check button it add  -->
+    <span>
+      Edit Labels</span>
+    <div fxFlexLayout="space-between center" fxAlign="row">
+      <button mat-icon-button (click)='close()'>
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-form-field [floatLabel]="'never'" class="outline1">
+        <input matInput type="text" placeholder="Create new label" [(ngModel)]="labelNote.label" class="outline"
+          cdkFocusInitial>
+      </mat-form-field>
+      <button mat-icon-button (click)="addLabel()">
+
+        <mat-icon>check</mat-icon>
+      </button>
+    </div>
+  </div>
+  <!-- this below fields for perform updation deletion for note -->
+  <div *ngFor="let item of addLabels | orderOf" fxAlign="row" fxLayoutAlign="space-between center">
+    <div fxLayoutGap="5px">
+      <div (mouseover)="hover(item.id)" (mouseout)="hover()">
+        <button mat-icon-button (click)="deleteLabel(item.id)" class="labels">
+          <span *ngIf="item.id!=Idd">
+            <mat-icon>label</mat-icon>
+          </span>
+          <span *ngIf="item.id==Idd" matToolTip="Delete Label">
+
+            <mat-icon>delete</mat-icon>
+          </span>
+        </button>
+      </div>
+    </div>
+    <!-- <mat-form-field >
+        <textarea matInput (click)="teamchange(item.id)" [(ngModel)]="labelNote.newLabel" class="example-full-width">{{item.label}}</textarea>
+      </mat-form-field> -->
+    <!-- <div  input matInput (click)="teamchange(item.id)" contenteditable="true" [(ngModel)]="labelNote.newLabel" class="edit">{{item.label}}</div> -->
+    <form class="example-form">
+
+      <mat-form-field class="example-full-width">
+        <!-- <span >  {{item.label}} </span> -->
+
+        <!-- <input matInput (click)="teamchange(item.id)" [(ngModel)]="labelNote.newLabel" -->
+        <input matInput (mouseover)="hover(item.id)" (click)="teamchange(item.id)" [(ngModel)]="item.label"
+          [ngModelOptions]="{standalone: true}">
+        <!-- {{item.label}} -->
+        <!-- <input #customerInput>{{customerInput.value}} -->
+      </mat-form-field>
+      <button mat-button *ngIf="item.id==Id" (click)="team(item)">
+        <mat-icon>check</mat-icon>
+      </button>
+      <button mat-button (mouseover)="hover(item.id)" (mouseout)="hover()" *ngIf="item.id!=Id"
+        (click)="teamchange(item.id)">
+        <mat-icon>create</mat-icon>
+      </button>
+    </form>
+  </div>
+  <mat-divider></mat-divider>
+  <div>
+    <div fxLayout="row" fxFlex="100" fxLayoutAlign="end end">
+      <button mat-button (click)="done()">Done</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+mat-toolbar{
+    height: 55px;
+    background-color: #FFB733;
+
+}
+
+::ng-deep .mat-dialog-container{
+    padding: 0px;
+    padding-bottom: 10px;
+}
+.tab{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+}
+.button{
+    padding: 10px;
+    button{
+        background-color: #008AFA;
+        color: white;
+        font-size: bold;
+    }
+    
+}
+.outer{
+    min-height: -webkit-fill-available
+}

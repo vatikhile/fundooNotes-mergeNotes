@@ -1,0 +1,86 @@
+.card-rechange{
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.16);
+}
+.search{
+    width:37vw; 
+    border-color: transparent;  
+    outline: none;
+}
+.search::-webkit-input-placeholder {
+    color: #81878c;
+    font-weight: lighter;
+    font-size: 18px;
+    font-family:Arial, Helvetica, sans-serif;
+    line-height: 40px;
+   
+}
+.mat-icon-button{
+    display: flex;
+    outline: none;
+}
+.card{
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.16);
+    min-height: fit-content;
+
+    }
+.search2{
+
+    width:40vw; 
+    border-color: transparent;  
+    outline: none;
+    }
+.search2::-webkit-input-placeholder {
+    color: #81878c;
+    font-weight: lighter;
+    font-size: 21px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.textAreaa{
+    width:43vw; 
+    border-color: transparent;  
+    outline: none;
+    overflow: hidden;
+
+}
+.textAreaa::-webkit-input-placeholder {
+    color: #81878c;
+    font-weight: lighter;
+    font-size: 21px;
+    font-family:Arial, Helvetica, sans-serif; 
+    line-height: 20px;  
+}
+.textArea{
+    width:43vw; 
+    border-color: transparent;  
+    outline: none;
+    overflow: hidden;
+
+}
+.textArea::-webkit-input-placeholder {
+    color: #81878c;
+    font-weight: lighter;
+    font-size: 14px;
+    font-family:Arial, Helvetica, sans-serif;
+    line-height: 20px;    
+}
+ .card-center{
+   display: flex;
+   height: 18vh;
+   background-color: white;
+  }
+
+.card-center1{
+   display: flex;
+   height: 30vh;
+   background-color: white;
+  }
+  .allNotes{
+      width: 100vw;
+      height: 100vh;
+  }
+// .abc{
+//     min-height: -webkit-fill-available;
+// }

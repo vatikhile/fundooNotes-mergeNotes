@@ -1,0 +1,97 @@
+<!-- for displaying the icons below the Note far various purpose -->
+<div fxLayout="row" fxFlex="100">
+  <div>
+    <button mat-icon-button matTooltip="Remind me" [matMenuTriggerFor]="reminder">
+      <img src="../../../assets/remindcard.svg">
+    </button>
+  </div>
+  <div>
+    <button mat-icon-button matTooltip="Collaborator" (click)="openDialog(notesData)">
+      <img src="../../../assets/collabcard.svg">
+    </button>
+  </div>
+  <div>
+    <button mat-icon-button matTooltip="Change color" [matMenuTriggerFor]="colorMenu">
+      <img src="../../../assets/colorcard.svg">
+    </button>
+
+  </div>
+  <div>
+    <button mat-icon-button matTooltip="New note with image">
+      <img src="../../../assets/cardImage.svg">
+    </button>
+  </div>
+  <div>
+    <button mat-icon-button matTooltip="Archive" (click)="archieveNote()">
+      <img src="../../../assets/archivecard.svg">
+    </button>
+  </div>
+  <div>
+    <button mat-icon-button matTooltip="More" (click)="morevert()" [matMenuTriggerFor]="morelist">
+
+      <img src="../../../assets/more1.png">
+    </button>
+  </div>
+</div>
+
+
+<div>
+  <mat-menu #colorMenu="matMenu" fxFlex="80" [overlapTrigger]="false">
+
+    <div>
+      <div *ngFor="let color of colorCodes" fxLayout="row wrap">
+        <div *ngFor="let iteam of color">
+          <button matbutton [ngStyle]="{ 'background-color': iteam.hexcode }" (click)="changeColor(iteam.hexcode)"
+            matTooltip="{{ iteam.name }}" mat-mini-fab class="color">
+            <!-- <mat-icon style="font-size: 40px" class="colorIcons">fiber_manual_record</mat-icon> -->
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </mat-menu>
+</div>
+
+<mat-menu #morelist="matMenu" fxLayout="column">
+  <div>
+    <button mat-menu-item [matMenuTriggerFor]="label" class="addlabel"> Add Label</button></div>
+  <div>
+    <button mat-button (click)="deleteNote(noteId)" class="addlabel"> Delete Note</button></div>
+  <div>
+    <button mat-button class="addlabel" routerLink='/questionAnswer/{{noteId}}'> Ask
+      Question</button>
+  </div>
+</mat-menu>
+
+<mat-menu #label="matMenu">
+  Label Note
+  <div *ngFor="let items of addNoteLabels">
+
+    <button mat-menu-item (click)="addLabelToNote(noteId,items.id)" class="addlabel">
+      <mat-checkbox></mat-checkbox>&nbsp;
+      <span>{{items.label}}</span>
+    </button>
+  </div>
+</mat-menu>
+<mat-menu #reminder="matMenu" [overlapTrigger]="false">
+  <ng-template matMenuContent>
+    <div fxLayout="column" fxLayoutAlign="space-between">
+      Reminder:
+      <div>
+        <button mat-button (click)="setTodayReminder()">
+          Later Today 8:00
+        </button>
+      </div>
+      <div>
+        <button mat-button (click)="setTomorrowReminder()">
+          Tommorrow 8:00
+        </button>
+      </div>
+      <div>
+        <button mat-button (click)="setWeeklyReminder()">
+          Next Week 8:00
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</mat-menu>

@@ -1,0 +1,154 @@
+<!-- /***************************************************************************************************** -->
+<!-- Purpose -fundoonotes 
+  file    - register.component.html 
+  author  - Vaibhaw Tikhile <vaibhawatikhile@gmail.com> 
+  version - 1.0
+  since   - 27/04/2019
+  **************************************************************************************************/ -->
+<div  fxLayoutAlign="center center"   fxLayout.xs="column" class="outer">
+  <mat-card fxLayout="column" fxLayoutAlign="center" fxFlex="60" class="center1">
+      <mat-card-content>
+      <!-- .lg="60" fxFlex.md="50" fxFlex.sm="50" -->
+      <div fxLayout="column" fxFlex="60" >
+    <div>
+      <mat-card-header class="header">
+        <mat-card-title>FundooNotes</mat-card-title>
+      </mat-card-header>
+    </div>
+   
+      
+      <div fxLayout="column" fxLayoutGap="25px" >
+        <div fxFlex="25" class="subtitle1"> Create your fundooAccount</div>
+        <div fxLayout="row" fxFlex="60" fxLayoutAlign="start center" fxLayoutGap="25px">
+          <div>
+            
+            <mat-form-field appearance="outline">
+              <mat-label>First name</mat-label>
+              <mat-error *ngIf="firstName.invalid">{{firstNameError()}}</mat-error>
+              <input matInput [(ngModel)]="register.firstName"  [formControl]="firstName" >
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Last name</mat-label>
+              <mat-error *ngIf="lastName.invalid">{{lastNameError()}}</mat-error>
+              <input matInput [(ngModel)]="register.lastName" [formControl]="lastName">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="column" class="username" class="1">
+        <div fxLayout="column" fxFlex="6" >
+          
+          <mat-form-field appearance="outline" >
+            <mat-label>Username name</mat-label>
+           
+            <mat-error *ngIf="userName.invalid">{{userNameError()}}</mat-error>
+            <input matInput [(ngModel)]="register.email" [formControl]="userName">
+          
+            <mat-hint>You can use letters,numbers & periods</mat-hint>
+          </mat-form-field>
+        </div>
+        
+ 
+    
+        
+          <div fxLayout="column" fxLayoutGap="-10px">
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              
+              
+                <div fxLayout="row" fxLayoutGap="10px">
+
+                  <div>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        
+                        <input matInput [(ngModel)]="register.password" [formControl]="password"
+                        [type]="hide ? 'text':'password'">
+                        <mat-error *ngIf="password.invalid">{{passwordError()}}</mat-error>
+                  
+                      </mat-form-field>
+                    </div>
+                    <div>
+                      <mat-form-field appearance="outline">
+                        <mat-label>Conform</mat-label>
+                        
+                        <input matInput [type]="hide ? 'text':'password'" [(ngModel)]="register.confirmPassword"
+                          [formControl]="confirmPassword">
+                          <mat-error *ngIf="password.invalid">{{confirmPasswordError()}}</mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div  fxLayout="column" fxLayoutAlign="center">
+                    <mat-icon matSuffix  (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                
+
+
+                    
+            
+              <!-- <div><button mat-button color="primary" routerLink='/forgot' class="color">Use my current email address
+                  instead</button>
+              </div> -->
+             
+            </div>
+          </div>
+        </div>
+        <div fxLayout="column" fxLayoutGap="2px">
+        <div><mat-hint class="hint">Use 8 or more characters with a mix of letters, numbers & symbols</mat-hint></div>
+          <!-- <div >
+          </div> -->
+          <div class="service" fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="40px" >
+          <div  *ngFor="let index of services" >
+              <mat-card    [ngClass]="productId==index.id ? 'selected':'notSelected' " (click)='select(index)'>
+             
+                  <mat-card class="insideMat">
+                    <div>Price: ${{index.price}} per Month</div>
+                    <div>{{index.name | uppercase}}</div>
+                    <div>
+                      <ul>
+                        <li>${{index.price}}/Month</li>
+                        <li>{{index.description}}</li>
+      
+                      </ul>
+                    </div>
+                  </mat-card>
+                 
+                  <div class="message" *ngIf="productId==index.id">Selected</div>
+                  <div class="message" *ngIf="productId!=index.id">Add to Cart</div>
+                </mat-card>
+           </div>
+           </div>
+      </div>
+             
+    
+      
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="75%">
+          <div><button mat-button color="primary" routerLink='/login' class="color">Sign in instead</button>
+          </div>
+          <div>
+            <mat-card-actions>
+              <button mat-raised-button color="primary"  (click)="submit()"  class="button"> Next </button>
+            </mat-card-actions>
+          </div>
+        
+      </div>
+      <mat-error [ngClass]="'error'"> {{getErrorMessageserver}}
+      </mat-error>
+    </div>
+  </div>
+</div>
+      <div fxLayout="column" fxFlex="40" fxLayoutAlign="center center" class="m" fxLayoutGap="2px">
+        <!-- <div fxLayout="column" fxFlex > -->
+         <div> <img mat-card-lg-image src="/assets/account.svg" class="img1"></div>
+         <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="-10px" class="tex">
+          <p> One account.All of fundoo</p><br> <p> working for you.</p></div>
+        <!-- </div> -->
+       
+  </div>
+        
+      
+      </mat-card-content>
+     
+      
+   
+  </mat-card>
+</div>

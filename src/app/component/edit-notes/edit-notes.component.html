@@ -1,0 +1,32 @@
+<div class="card-center1" fxLayout="column" fxLayoutAlign="center center" fxFlex="100">
+  <div fxLayout="column" fxFlex="100">
+
+    <div fxLayout="row" fxFlex="50" fxLayoutGap="0%" fxLayoutAlign="start">
+      <div>
+        <textarea matTextareaAutosize class="textArea" placeholder="Title" [(ngModel)]="noteData.title"></textarea>
+      </div>
+      <div fxFlexLayout="end" *ngIf="toggle==false">
+        <button mat-icon-button (click)="team()" matTooltip="Pin note">
+          <img src="../../../assets/pin.svg"></button>
+      </div>
+      <div fxFlexLayout="end" *ngIf="toggle==true">
+        <button mat-icon-button (click)="changeteam()" matTooltip="Pin note">
+          <img src="../../../assets/unpin.svg"></button>
+      </div>
+    </div>
+    <div>
+      <textarea matTextareaAutosize class="textArea" placeholder="Note" [(ngModel)]="noteData.description"></textarea>
+    </div>
+    <div fxLayout="row">
+      <div>
+        <app-icon></app-icon>
+      </div>
+      <div>
+        <button matbutton fxLayout="row" fxLayoutAlign="space-between end" class="mat-icon-button"
+          [mat-dialog-close]="true" (click)="updateNotes()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

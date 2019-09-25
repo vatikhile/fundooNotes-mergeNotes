@@ -1,0 +1,246 @@
+<div class="outer">
+  <div *ngIf="display" fxLayout='row' fxLayoutAlign='center center'>
+    <h1>YOUR CART IS EMPTY</h1>
+  </div>
+  <!-- <div fxLayout="column" fxLayoutGap="50px"> -->
+  <div fxLayout="center center" fxLayout="column" >
+    
+      <div *ngIf="cartData.product!=undefined" class="progressFirst"  fxLayout="row">
+          <div fxLayout="row"  fxFlex="12" fxLayoutAlign="center center">
+            <mat-chip-list>
+              <mat-chip class="chip"  selected>fundooNotes</mat-chip>
+            </mat-chip-list>
+          </div>
+        
+          <div *ngIf="first" class="progressFirstSteps">
+            <div>
+              <mat-progress-bar mode="determinate" value="15"></mat-progress-bar>
+              <mat-icon>shopping_cart</mat-icon>
+            </div>
+            <div fxLayout="row" fxLayoutGap='24%' fxLayoutGap.xs='18%' class="steps">
+              <div class="sign">
+                SIGNIN
+              </div>
+        
+              <div>
+                REVIEW
+              </div>
+              <div>
+                COMPLETE PAYMENT
+              </div>
+            </div>
+          </div>
+        
+          <div *ngIf="Second" class="progressSecondSteps">
+            <div>
+              <mat-progress-bar mode="determinate" value="45"></mat-progress-bar>
+              <mat-icon>shopping_cart</mat-icon>
+            </div>
+            <div fxLayout="row"   class="steps">
+              <div class="sign">
+                SIGNIN
+              </div>
+        
+              <div class="review">
+                REVIEW
+              </div>
+              <div fxFlexAlign="end">
+                COMPLETE PAYMENT
+              </div>
+            </div>
+          </div>
+          <div *ngIf="Third" class="progressThirdSteps">
+            <div>
+              <mat-progress-bar mode="determinate" value="100"></mat-progress-bar>
+              <mat-icon>shopping_cart</mat-icon>
+            </div>
+            <div fxLayout="row"  class="steps">
+              <div class="sign">
+                SIGNIN
+              </div>
+        
+              <div class="review">
+                REVIEW
+              </div>
+              <div class="complete">
+                COMPLETE PAYMENT
+              </div>
+            </div>
+          </div>
+        
+        </div>
+        <div *ngIf="cartData.product!=undefined" >
+            <div *ngIf="firstComplete" class="shop">
+              Shopping Cart
+            </div>
+          
+            <div *ngIf="SecondComplete">
+              <div class="shop">
+                Review Your Order
+              </div>
+              <div class="condition" fxLayout='row'  fxLayout.xs='column'>
+                <div>
+                    By Click on the 'Place Your Order ' You agree with fundooNotes
+                </div>
+                <div fxLayout='row'>
+                <div class="privacy"> &nbsp; privacy policy </div>
+                &nbsp; and &nbsp; <div class="privacy"> condition of use </div>
+              </div>
+              </div>
+            </div>
+          
+          
+          
+          </div>
+          
+          <div *ngIf="cartData.product!=undefined"  class="downMain"  [ngClass]="check"  fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign.xs="center end" fxLayoutAlign.sm="center end"  fxLayoutAlign="center start">
+            <mat-card fxLayout="column" fxLayoutGap='2%' class="downStage" fxFlex='70'>
+              <!-- first row -->
+          
+              <!-- <mat-divider></mat-divider> -->
+              <!-- second row -->
+              <div *ngIf="cartData.product!=undefined" fxLayout="row" fxLayout.xs="column" fxLayoutAlign.xs="space-around start"   fxLayoutAlign="space-between start">
+                <div class="card"  fxHide.xs='true'>
+                  ${{cartData.product.price}} Per Month
+                  <div>
+                    {{cartData.product.name }}
+                  </div>
+                </div>
+          
+          
+                <div class="details">
+                  <div class="name">
+                    {{cartData.product.name}} Pack Details
+                  </div>
+                  <div>
+                    <ul>
+                      <li>
+                        {{cartData.product.description}}
+                      </li>
+                      <div *ngIf="cartData.product.name=='advance'">
+                        <li>Ability to add checklist </li>
+                        <li>Ability to add Collaborator</li>
+                      </div>
+                    </ul>
+                  </div>
+                </div>
+                <div class="price">
+                  <div class="name">
+                    Price
+                  </div>
+                  <div class="rate">
+                    $ {{cartData.product.price}}
+                  </div>
+                </div>
+          
+          
+                <div class="price">
+                  <div class="name">
+                    Validity
+                  </div>
+                  <div class="rate">
+                    Per Month
+                  </div>
+                </div>
+          
+          
+          
+              </div>
+          
+              <!-- <mat-divider></mat-divider> -->
+              <div *ngIf="first">
+                <div class="downPrice" fxLayout='row' fxLayoutAlign="end center"  *ngIf="cartData.product!=undefined">
+                  <div>
+                    <h5>Subtotal (1 Item ): </h5>
+          
+                  </div>
+                  <div class="priceSubtotal">
+                    <h5>${{cartData.product.price}}</h5>
+          
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="Second">
+                <mat-divider></mat-divider>
+                <div class="payement" fxFlex='100' fxLayout='row' fxLayoutGap='8%' >
+                <div fxLayout='column' fxFlex='70'>
+                  <div class="delivaryAddress"> Delivery Address</div>
+                    <div class="search" >
+                        <mat-form-field fxFlex='100' appearance="outline">
+              
+                          <input matInput class="place" autocomplete="off" [formControl]="Delivery">
+              
+                        </mat-form-field>
+                      </div>
+                </div>
+          
+          
+          
+                 
+                  <div fxFlex='20' fxLayout='column'>
+                        <div>
+                            <h5>PAYMENT METHOD</h5>
+                        </div>
+                        <div>
+                          Cash on Delivery
+                        </div>
+          
+                  </div>
+          
+          
+                </div>
+          
+          
+              </div>
+              <div *ngIf="Third" fxLayout='row' fxLayoutAlign="end center" >
+          
+              <div class="order" *ngIf="cartData.product!=undefined && !cartData.isPaymentDone" >
+                <h4> pending</h4>
+              </div>
+          
+              <div class="orderDone" *ngIf="cartData.product!=undefined && cartData.isPaymentDone" >
+                  <h4> Completed</h4>
+                </div>
+          
+             
+              </div>
+          
+          
+          
+          
+            </mat-card>
+            <div *ngIf="cartData.product!=undefined" fxFlex='30' fxFlex.sm='100' fxFlex.xs='100' class="checkOut" fxLayout="row" fxLayoutAlign="center center">
+              <div  *ngIf="!Third" fxFlex='80' fxFlex.sm='100' fxFlex.xs='100' class="checkOutInside" fxLayout="column" fxLayoutAlign="space-around center">
+          
+          
+                <div fxLayout='row'>
+                  <div>
+                    <h3>Subtotal (1 Item ): </h3>
+          
+                  </div>
+                  <div class="priceSubtotal">
+                    <h3>${{cartData.product.price}}</h3>
+          
+                  </div>
+                </div>
+                <div *ngIf="first" class="button" fxLayout='row' fxLayoutAlign='center center'>
+                  <div>
+                    <button mat-flat-button (click)="proceed()">Proceed To CheckOut</button>
+                  </div>
+                </div>
+                <div *ngIf="Second" class="buttonSecond">
+                  <button mat-flat-button (click)="placeOrder()">Place Your Order</button>
+                </div>
+          
+          
+          
+              </div>
+          
+          
+          
+            </div>
+          </div>
+          </div>
+      
+</div>
+

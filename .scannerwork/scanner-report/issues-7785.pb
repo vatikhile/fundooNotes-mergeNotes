@@ -1,0 +1,76 @@
+Y
+
+javascriptParentheses!Remove those useless parentheses. 2// :
+È<//5 6Y
+
+javascriptParentheses!Remove those useless parentheses. 2EE8 9:
+È<EER SY
+
+javascriptParentheses!Remove those useless parentheses. 2hh :
+È<hh3 4Y
+
+javascriptParentheses!Remove those useless parentheses. 2mm :
+È<mm1 2Y
+
+javascriptParentheses!Remove those useless parentheses. 2uu :
+È<uu= >]
+
+javascriptParentheses!Remove those useless parentheses. 2
+çç :
+È<
+çç( )]
+
+javascriptParentheses!Remove those useless parentheses. 2
+çç :
+È<
+çç' (]
+
+javascriptParentheses!Remove those useless parentheses. 2
+∞∞9 ::
+È<
+∞∞W X]
+
+javascriptParentheses!Remove those useless parentheses. 2
+∑∑ :
+È<
+∑∑F G]
+
+javascriptParentheses!Remove those useless parentheses. 2
+∑∑* +:
+È<
+∑∑E F]
+
+javascriptParentheses!Remove those useless parentheses. 2
+∑∑+ ,:
+È<
+∑∑D E]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ﬂﬂ :
+È<
+ﬂﬂI J]
+
+javascriptParentheses!Remove those useless parentheses. 2
+≈≈ :
+È<
+≈≈B C]
+
+javascriptParentheses!Remove those useless parentheses. 2
+◊◊ :
+È<
+◊◊B C]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ÂÂ :
+È<
+ÂÂB C]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ÌÌ# $:
+È<
+ÌÌN O]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ÔÔ( ):
+È<
+ÔÔZ [

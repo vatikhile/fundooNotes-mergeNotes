@@ -1,0 +1,71 @@
+<!-- for displaying the small matcard -->
+<div fxLayout="column" fxFlex="100">
+  <div class="card-center" *ngIf="flag===false" fxLayout="row" fxLayoutAlign="center">
+    <!-- <div fxLayout="row" fxLayoutAlign="center end"> -->
+    <div fxLayout="column" fxLayoutAlign="center center" class="22" fxFlex="63">
+      <mat-card (click)="show()" fxLayout="row" fxLayoutAlign="center center" fxFlex="45" class="card-rechange">
+        <div>
+          <input matInput fxFlex="100" class="search" placeholder="Take a Note...">
+
+        </div>
+        <div fxLayout="row" fxFlex="100" fxLayoutGap="10%" fxLayoutAlign="end center">
+          <div>
+
+            <button mat-icon-button style="width:100%" matTooltip="new note with drawing" class="icon">
+              <mat-icon>brush</mat-icon>
+            </button>
+          </div>
+          <div>
+            <button mat-icon-button style="width:100%" matTooltip="new note with image" class="icon">
+              <mat-icon><img src='../../../assets/imagecard.svg'></mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+    <!-- </div> -->
+    <!-- </div> -->
+  </div>
+  <!-- for displaying the another matcard after click on small matcard-->
+  <div class="card-center1" *ngIf="flag===true" fxLayout="row" fxLayoutAlign="center">
+    <div fxLayout="column" fxLayoutAlign="center center" class="22" fxFlex="63">
+      <mat-card [style.backgroundColor]="setColor" fxLayout="row" fxFlex="72" class="card">
+        <div fxLayout="column" fxFlex="20">
+          <div>
+            <div fxLayout="row" fxFlex="50" fxLayoutGap="0%" fxLayoutAlign="start">
+              <div>
+                <textarea matTextareaAutosize [style.backgroundColor]="setColor" fxLayout="column" class="textAreaa"
+                  placeholder="Title" [(ngModel)]="addNote.title"></textarea>
+              </div>
+              <div fxFlexLayout="end" *ngIf="toggle==true">
+                <button mat-icon-button (click)="team()" matTooltip="Pin note">
+                  <img src="../../../assets/pin.svg"></button>
+              </div>
+              <div fxFlexLayout="end" *ngIf="toggle==false">
+                <button mat-icon-button (click)="changeTeam()" matTooltip="Pin note">
+                  <img src="../../../assets/unpin.svg"></button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <textarea matTextareaAutosize [style.backgroundColor]="setColor" fxLayout="column" class="textArea"
+              placeholder="Take a Note..." [(ngModel)]="addNote.description"></textarea>
+          </div>
+          <!-- <mat-card-actions> -->
+          <div fxLayout="row" fxLayoutAlign="space-between start">
+            <div>
+              <app-icon (countChange)="receiveColorEvent($event)"></app-icon>
+            </div>
+            <div>
+              <button matbutton class="mat-icon-button" (click)="addNotes()">
+                Close
+              </button>
+            </div>
+          </div>
+          <!-- </mat-card-actions> -->
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <app-all-notes class="allNotes"></app-all-notes>
+</div>

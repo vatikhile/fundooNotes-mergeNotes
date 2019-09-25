@@ -1,0 +1,130 @@
+
+    // @media(min-width:400px)
+    // {.user{
+    // size:1px;
+
+    // }}
+    .color{
+      outline: none;
+      background-color: transparent;
+    }
+    .center1{
+      margin-top: 1%;
+      border: 1px double lightgray;
+      // margin-bottom: 3%;
+    }
+   .img1{
+    height: 39vh;
+    width: 15vw;
+   }
+
+    .imag{
+      height: 244px;
+      width: 24%;
+   
+    }
+
+    .image_footer{
+
+      text-align: center;
+    }
+    
+
+  .content{
+  font-size:10;
+  
+  }
+  .card{
+    display:flex;
+    justify-content: center;
+   flex-direction:column;
+    margin-top: 100px;
+  margin-left: 300px;
+  margin-right: 300px;
+  border-image-width:10;
+  text-align: center;
+  border-color: #d8dbdf;
+  }
+  
+  .log{
+  
+    display:flex;
+    justify-content: center;
+    background-color: transparent;
+  
+  }
+  .buttonsize{
+  width: 222px;
+  margin-left: 0%;
+  
+  
+  }
+  .butt{ 
+    font-style: aria
+  }
+  .outer{
+    min-height:webkit-fill-available
+  }
+  .tex{
+    font-size: 17px;
+    color:#323335;
+    font-weight: 500;
+  }
+  .hint{
+    font-size: 11px;
+  }
+
+    .insideMat{
+    margin-left: -36px;
+    margin-top: -36px;
+ min-height: 150px;
+
+}
+.service{
+  margin-left: 36px;
+  margin-top: 36px;
+}
+
+.selected{
+  background-color: #e6ac00;
+  width: fit-content;
+width: 180px;
+
+.insideMat{
+   margin-left: -36px;
+   margin-top: -36px;
+   max-height: 178px;
+}
+
+
+
+
+}
+.notSelected{
+  background-color: #b8b5ae;
+  width: fit-content;
+width: 180px;
+
+  .insideMat{
+      margin-left: -36px;
+      margin-top: -36px;
+   max-height: 178px;
+
+  }
+ 
+
+}
+:host::ng-deep.mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0px;
+  padding-top: 5px;
+  padding-bottom: 3px;
+  margin-top: -4px;
+}
+:host::ng-deep input.mat-input-element {
+  //margin-top: -0.0625em;
+  padding-bottom: 10px;
+}
+
+:host::ng-deep label.mat-input-placeholder {
+  color: #fff;   // choose the color you want
+}

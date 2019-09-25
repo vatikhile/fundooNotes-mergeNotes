@@ -1,0 +1,268 @@
+_
+
+javascriptS3854)super() must be invoked with 3 arguments. 2
+üü :
+Ã^
+ÖÖ D_
+
+javascriptS3854)super() must be invoked with 3 arguments. 2
+√√ :
+Ã^
+ÖÖ D]
+
+javascriptS1854:Remove this useless assignment to local variable "headers" 2
+ÛÛ Y
+
+javascriptParentheses!Remove those useless parentheses. 2__ :
+Ã^__E F]
+
+javascriptParentheses!Remove those useless parentheses. 2
+" #:
+Ã^
+L M]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ÒÒ* +:
+Ã^
+ÒÒ\ ]]
+
+javascriptParentheses!Remove those useless parentheses. 2
+çç :
+Ã^
+çç< =]
+
+javascriptParentheses!Remove those useless parentheses. 2
+úú! ":
+Ã^
+úúA B]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ªª  :
+Ã^
+ªªP Q]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ªªS T:
+Ã^
+ªª| }]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ññ :
+Ã^
+ññ0 1]
+
+javascriptParentheses!Remove those useless parentheses. 2
+§§ :
+Ã^
+§§F G]
+
+javascriptParentheses!Remove those useless parentheses. 2
+§§  :
+Ã^
+§§E F]
+
+javascriptParentheses!Remove those useless parentheses. 2
+•• :
+Ã^
+••, -]
+
+javascriptParentheses!Remove those useless parentheses. 2
+≥≥ :
+Ã^
+≥≥+ ,]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ΩΩ :
+Ã^
+ΩΩ0 1]
+
+javascriptParentheses!Remove those useless parentheses. 2
+«« :
+Ã^
+««+ ,]
+
+javascriptParentheses!Remove those useless parentheses. 2
+œœ :
+Ã^
+œœ6 7]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ÛÛ :
+Ã^
+ÛÛM N]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ÛÛ& ':
+Ã^
+ÛÛB C]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ˇˇ% &:
+Ã^
+ˇˇR S]
+
+javascriptParentheses!Remove those useless parentheses. 2
+éé1 2:
+Ã^
+ééM N_
+
+javascriptParentheses!Remove those useless parentheses. 2
+ééX Y:
+Ã^éé± ≤_
+
+javascriptParentheses!Remove those useless parentheses. 2
+éék l:
+Ã^éé¶ ß_
+
+javascriptParentheses!Remove those useless parentheses. 2
+éé~ :
+Ã^éé† °]
+
+javascriptParentheses!Remove those useless parentheses. 2
+èè :
+Ã^
+èè, -]
+
+javascriptParentheses!Remove those useless parentheses. 2
+îî: ;:
+Ã^
+îîV W]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ïï" #:
+Ã^
+ïïB C]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ññ :
+Ã^
+ññ4 5]
+
+javascriptParentheses!Remove those useless parentheses. 2
+õõ' (:
+Ã^
+õõC D]
+
+javascriptParentheses!Remove those useless parentheses. 2
+¢¢  !:
+Ã^
+¢¢< =]
+
+javascriptParentheses!Remove those useless parentheses. 2
+••  !:
+Ã^
+••< =]
+
+javascriptParentheses!Remove those useless parentheses. 2
+©© :
+Ã^
+©©8 9]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ùù0 1:
+Ã^
+ùùI J]
+
+javascriptParentheses!Remove those useless parentheses. 2
+¢¢ :
+Ã^
+¢¢/ 0]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ÒÒ :
+Ã^
+ÒÒ. /]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ÒÒ :
+Ã^
+ÒÒ- .]
+
+javascriptParentheses!Remove those useless parentheses. 2
+¡¡A B:
+Ã^
+¡¡f g]
+
+javascriptParentheses!Remove those useless parentheses. 2
+««= >:
+Ã^
+««a b]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ÎÎ :
+Ã^
+ÎÎ+ ,]
+
+javascriptParentheses!Remove those useless parentheses. 2
+Ç	Ç	, -:
+Ã^
+Ç	Ç	^ _]
+
+javascriptParentheses!Remove those useless parentheses. 2
+Ü	Ü	) *:
+Ã^
+Ü	Ü	@ A]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ü	ü	 :
+Ã^
+ü	ü	g h]
+
+javascriptParentheses!Remove those useless parentheses. 2
+Ÿ	Ÿ	+ ,:
+Ã^
+Ÿ	Ÿ	F G]
+
+javascriptParentheses!Remove those useless parentheses. 2
+‰	‰	( ):
+Ã^
+‰	‰	C D]
+
+javascriptParentheses!Remove those useless parentheses. 2
+Ò	Ò	) *:
+Ã^
+Ò	Ò	D E]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ô
+ô
+, -:
+Ã^
+ô
+ô
+G H]
+
+javascriptParentheses!Remove those useless parentheses. 2
+““% &:
+Ã^
+““< =]
+
+javascriptParentheses!Remove those useless parentheses. 2
+áá :
+Ã^
+áá? @]
+
+javascriptParentheses!Remove those useless parentheses. 2
+áá' (:
+Ã^
+áá> ?]
+
+javascriptParentheses!Remove those useless parentheses. 2
+««# $:
+Ã^
+««j k]
+
+javascriptParentheses!Remove those useless parentheses. 2
+««5 6:
+Ã^
+««i j]
+
+javascriptParentheses!Remove those useless parentheses. 2
+ôô# $:
+Ã^
+ôôL M]
+
+javascriptParentheses!Remove those useless parentheses. 2
+àà :
+Ã^
+àà0 1
