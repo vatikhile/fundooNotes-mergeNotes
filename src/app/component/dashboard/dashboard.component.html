@@ -25,9 +25,9 @@
                 </button>
                 <input mat-input class="searchInput" routerLink='/search' [(ngModel)]="searchContent" (keyup)="onKey()"
                   placeholder="Search">
-                  <button  *ngIf="searchContent!=undefined" mat-icon-button class="search" (click)="searchc()">
-                    <mat-icon >close</mat-icon>
-                  </button>
+                <button *ngIf="searchContent!=undefined" mat-icon-button class="search" (click)="searchc()">
+                  <mat-icon>close</mat-icon>
+                </button>
                 <!-- ng-model="searchText" -->
                 <!-- <app-all-notes [childMessage]="searchText"></app-all-notes> -->
               </mat-card>
@@ -50,10 +50,13 @@
               </div>
             </div>
             <div>
-              <button mat-icon-button (click)="mainCartOpen()"><mat-icon>shopping_cart</mat-icon> </button>
-              <button fxFlex="100px"  mat-flat-button (click)="mainCartOpen()" color="accent" fxLayout="row" fxLayoutAlign="center center">Merge Notes </button>
-          </div>
-          <!-- <div> </div> -->
+              <button mat-icon-button (click)="mainCartOpen()">
+                <mat-icon>shopping_cart</mat-icon>
+              </button>
+              <button fxFlex="100px" mat-flat-button (click)="mergeNotes()" color="accent" fxLayout="row"
+                fxLayoutAlign="center center" >Merge Notes </button>
+            </div>
+            <!-- <div> </div> -->
           </div>
         </div>
         <div fxLayout="column" fxLayoutAlign="center end">
@@ -67,6 +70,8 @@
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
+
+
   <mat-divider></mat-divider>
   <div fxLayout="column" fxLayoutAlign="start start" class="scroll">
     <!-- Open the sidenav bar after click on menu button in the dashboard -->
@@ -177,4 +182,97 @@
       </div>
     </div>
   </mat-menu>
+</div>
+
+<div fxLayout="column" fxLayoutAlign="start end" fxFlex="100" *ngIf="isMerge==true">
+  <mat-card class="menu">
+    <div fxLayout="row" fxLayoutAlign="start">
+      {{message1.length}} Note Merging
+    </div>
+    <mat-divider></mat-divider>
+    <div fxLayout="column" fxLayoutAlign="start">
+      <!-- <input type="file" class="fileSelect" (change)=profileImage($event) #image> -->
+
+      <!-- <mat-grid-tile> -->
+      <!-- <mat-form-field>
+            <mat-label><span>select title</span></mat-label>
+            <mat-select>
+              <mat-option *ngFor="let item of message1"  [value]="item.value">
+                {{item.title}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+      <mat-grid-list cols="1" rowHeight="2:1">
+        <mat-grid-tile>
+          <!-- <div> -->
+          <mat-form-field>
+            <mat-label>select title</mat-label>
+            <mat-select [(value)]="addNotes.title">
+              <mat-option *ngFor="let item of message1" [value]="item.title">
+                {{item.title}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- </div> -->
+        </mat-grid-tile>
+        <!-- </mat-grid-tile> -->
+        <mat-grid-tile>
+          <!-- <div> -->
+          <mat-form-field>
+            <mat-label>select description</mat-label>
+            <mat-select [(value)]="addNotes.description">
+              <mat-option *ngFor="let item1 of message1" [value]="item1.description">
+                {{item1.description}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- </div> -->
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field>
+            <mat-label>select label</mat-label>
+            <mat-select [(value)]="selectedLabel">
+              <mat-option *ngFor="let item2 of message1" [value]="item2?.noteLabels[0]?.label">
+                {{item2?.noteLabels[0]?.label}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field>
+            <mat-label>select color</mat-label>
+            <mat-select [(value)]="addNotes.color">
+              <mat-option *ngFor="let item3 of message1" [value]="item3.color"
+                style="background-color: '#item3.color'">
+                {{item3.color}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+        <!-- <mat-radio-group [(value)]="addNotes.isPined">
+            <mat-radio-button [value]="true">Pin</mat-radio-button>
+            <mat-radio-button [value]="false">unPin</mat-radio-button>
+          </mat-radio-group> -->
+          <mat-form-field>
+              <mat-label>pin/unpin</mat-label>
+              <mat-select [(value)]="addNotes.isPined">
+                <mat-option  [value]="true"
+                >
+                 pin
+                </mat-option>
+                <mat-option  [value]="false"
+                >
+                 unPin
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <div fxLayout="row">
+        <button mat-flat-button (click)="cancel()">Cancel</button>
+        <button mat-flat-button (click)="createNote()">Create Note</button>
+      </div>
+    </div>
+  </mat-card>
 </div>

@@ -8,7 +8,10 @@ import { ViewService } from '../../core/service/viewService/view.service';
 import { environment } from 'src/environments/environment';
 import { ProfilePicComponent } from '../profile-pic/profile-pic.component';
 import { SearchService } from '../../core/service/searchService/search.service'
-
+import { Notes } from '../../core/model/Notes/notes';
+import { MatSnackBar } from '@angular/material';
+// import { NoteServiceService } from '../../core/service/note/note-service.service'
+// import { Label } from 'src/app/core/model/label/label';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -18,12 +21,16 @@ import { SearchService } from '../../core/service/searchService/search.service'
 export class DashboardComponent implements OnInit {
   private flag: boolean = false;
   toggle: boolean = true;
+  isMerge:boolean=false;
+  addNotes:Notes = new Notes();
+  // labelNote: Label = new Label();
   // list: boolean = true;
   // grid: boolean=false;
   addLabels: any = [];
-
+  // mergeNote:any[]=[];
   message: any;
   header: string;
+  selectedLabel:any;
   searchContent: any;
   firstName = localStorage.getItem('firstName');
   email = localStorage.getItem('email');
@@ -31,11 +38,12 @@ export class DashboardComponent implements OnInit {
   profilImaage = localStorage.getItem('profilPic');
   values: string;
   profil: string;
-
-  constructor(private dialog: MatDialog, private search: SearchService, private noteService: NoteServiceService, private dataService: UpdateServiceService, private view: ViewService, private route: Router) { }
+message1:any;
+  constructor(private dialog: MatDialog, private search: SearchService, private snackbar:MatSnackBar, private noteService: NoteServiceService, private dataService: UpdateServiceService, private view: ViewService, private route: Router) { }
   img = environment.url + this.profilImaage;
 
   ngOnInit() {
+    // console.log('dasssssss1111111111111',this.message1);
     /*****
    @purpose:After Open the dashboard it display the set profile image of owner on the toolbar button without refresh the page
    ******/
@@ -48,6 +56,9 @@ export class DashboardComponent implements OnInit {
     this.showLabel();
     this.sidenavUpdateLabel();
     this.header = 'fundooNotes';
+    this.dataService.current.subscribe(message1 => this.message1= message1)
+    console.log("vvvvvvvvsssss",this.message1);
+    
   }
   @Output() count = new EventEmitter();
   /*****
@@ -181,6 +192,41 @@ export class DashboardComponent implements OnInit {
   mainCartOpen(){
     this.route.navigate(['', 'mainCart']);
   }
+  mergeNotes(){
+    console.log('dasssssss',this.message1);
+    this.isMerge=!this.isMerge;
+  }
+  cancel(){
+    console.log('bbb',this.selectedLabel);
+    
+  }
+  createNote(){
+    this.isMerge=false;
+console.log("tilte",this.addNotes);
+// console.log("description",this.addNotes.description);
+// console.log("color",this.addNotes.color);
+this.noteService.addNote(this.addNotes).subscribe(
+  (response: any) => {
+    this.view.getNotes();
+    console.log(response);
+    // this.dataService.currentMessage;
+    this.dataService.changeMessage('')
+    this.snackbar.open(
+      "Note is created Successfully", "",
+      { duration: 2500 }
+    )
+
+  },
+  (error)=>{
+    console.log("error");
+    this.snackbar.open(
+      "Note is created Successfully", "",
+      { duration: 2500 })
+  }
+    )
+    this.addNotes=null;
+    this.isMerge=false;
+}
 
 }
 

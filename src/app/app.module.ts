@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { LoginComponent } from './component/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -110,6 +111,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     ImageCropperModule,
     MatIconModule,
     HttpClientModule,
+    MatGridListModule,
     MatSelectModule,
     FlexLayoutModule,
     MatRadioModule,

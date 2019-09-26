@@ -177,6 +177,24 @@
 .search{
     margin-left: -40px
 }
+mat-grid-tile {
+    background: lightblue;
+  }
+  .menu{
+    // margin-top: -223px;
+    // margin-left: -230px;
+    border: 1px solid red;
+    z-index: 1;
+    margin-top: 66px;
+    width: 17vw;
+    /* margin: auto; */
+    margin-left: -221px;
+  }
+  .mat-form-field {
+    width: 9vw;
+    text-align: center;
+}
+
 // :host::ng-deep.main:root {
 //     overflow-y: hidden;
 //     // height: 20000vh;

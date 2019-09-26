@@ -7,7 +7,7 @@ import { EditNotesComponent } from '../edit-notes/edit-notes.component';
 import { MatSnackBar } from '@angular/material';
 import { LabelsService } from '../../core/service/labelService/labels.service';
 import { Notes } from '../../core/model/Notes/notes'
-
+// import {mergeNote  } from "../../core/model/mergeNote";
 @Component({
   selector: 'app-all-notes',
   templateUrl: './all-notes.component.html',
@@ -18,8 +18,8 @@ export class AllNotesComponent implements OnInit {
   public addNotes: any[];
   Notes: any[] = [];
   message: any;
-  markNote:string[];
-  selectNote:any[];
+  mergeNote:any[] = [];
+  selectNote:any[]=[];
   views: any;
   markEnable: boolean = false;
   removable = true;
@@ -31,7 +31,7 @@ export class AllNotesComponent implements OnInit {
   @Input() note;
   @Input() notesData;
   @Input('master') searchText: any;
-
+  // @Output() messageEvent = new EventEmitter();
   countId: any;
   direction1: string = 'wrap';
   allign: string = '';
@@ -289,8 +289,21 @@ export class AllNotesComponent implements OnInit {
     item.markEnable = !item.markEnable
     // console.log("vvvvvvvvv",item);
     this.selectNote=item
-    console.log("sssss",this.selectNote);
+    // console.log("sssss",this.selectNote);
     
+    if(item.markEnable==true){
+    this.mergeNote.push(this.selectNote)
+    console.log('vvvv',this.mergeNote);
+    }
+    else 
+    {
+      this.mergeNote.pop();
+      console.log('pop',this.mergeNote);
+      
+    }
+    // this.dataService.current.subscribe(message => this.message = this.mergeNote)
+    this.dataService.mergeNote(this.mergeNote)
+    // this.messageEvent.emit(this.mergeNote)
     // this.markNote=[item,...this.selectNote]
     // console.log('event', $event);
 
