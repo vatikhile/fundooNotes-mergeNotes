@@ -10,7 +10,7 @@ export class UpdateServiceService {
   private messageSource = new BehaviorSubject('');
   currentMessage = this.messageSource.asObservable();
 
-  private messageForNote = new BehaviorSubject('default message');
+  private messageForNote = new BehaviorSubject('');
   current = this.messageForNote.asObservable();
 
   constructor() { }
@@ -20,8 +20,12 @@ export class UpdateServiceService {
   changeMessage(message: string) {
     this.messageSource.next(message)
   }
-  mergeNote(message1: any) {
-    this.messageForNote.next(message1)
+  noteData(message:any){
+    this.messageSource.next(message)
+
+  }
+  mergeNote(mergeNote: any) {
+    this.messageForNote.next(mergeNote)
   }
 }
 

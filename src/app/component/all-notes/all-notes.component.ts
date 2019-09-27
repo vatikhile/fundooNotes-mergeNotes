@@ -7,6 +7,7 @@ import { EditNotesComponent } from '../edit-notes/edit-notes.component';
 import { MatSnackBar } from '@angular/material';
 import { LabelsService } from '../../core/service/labelService/labels.service';
 import { Notes } from '../../core/model/Notes/notes'
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 // import {mergeNote  } from "../../core/model/mergeNote";
 @Component({
   selector: 'app-all-notes',
@@ -18,8 +19,8 @@ export class AllNotesComponent implements OnInit {
   public addNotes: any[];
   Notes: any[] = [];
   message: any;
-  mergeNote:any[] = [];
-  selectNote:any[]=[];
+  mergeNote: any[] = [];
+  selectNote: any[] = [];
   views: any;
   markEnable: boolean = false;
   removable = true;
@@ -48,6 +49,7 @@ export class AllNotesComponent implements OnInit {
   constructor(private noteService: NoteServiceService, private dataService: UpdateServiceService, private view: ViewService, private dialog: MatDialog, private snackbar: MatSnackBar, private label1: LabelsService) { }
 
   ngOnInit() {
+
     /*****
    @purpose:Display all notes without refreshing  the page
    ******/
@@ -86,7 +88,7 @@ export class AllNotesComponent implements OnInit {
         // this.toggle=this.views.data1;
         console.log(this.direction);
       });
-
+    // this.dataService.currentMessage.subscribe((message) => this.mergeNote = message)
 
   }
 
@@ -288,32 +290,51 @@ export class AllNotesComponent implements OnInit {
   mark(item) {
     item.markEnable = !item.markEnable
     // console.log("vvvvvvvvv",item);
-    this.selectNote=item
+    this.selectNote = item
     // console.log("sssss",this.selectNote);
-    
-    if(item.markEnable==true){
-    this.mergeNote.push(this.selectNote)
-    console.log('vvvv',this.mergeNote);
+
+    if (item.markEnable == true) {
+      this.mergeNote.push(this.selectNote)
+      console.log('vvvv', this.mergeNote);
     }
-    else 
-    {
+    else {
       this.mergeNote.pop();
-      console.log('pop',this.mergeNote);
-      
+      console.log('pop', this.mergeNote);
+
     }
     // this.dataService.current.subscribe(message => this.message = this.mergeNote)
     this.dataService.mergeNote(this.mergeNote)
-    // this.messageEvent.emit(this.mergeNote)
-    // this.markNote=[item,...this.selectNote]
-    // console.log('event', $event);
+    this.dataService.currentMessage.subscribe((message) => {
+      this.message = message
+      if (this.message == null) {
+        this.mergeNote = [];
+        item.markEnable = false
 
-    // this.notesId = Id
-    // // console.log('item ',item);
-    // console.log('111111111 ', this.markEnable);
-    // this.markEnable = true;
-    // console.log('222222222 ', this.markEnable);
-    // return 'matcard-border'
+        console.log("222------------------->", this.mergeNote);
+
+      }
+      else {
+        console.log('v1111111111111111111------------>');
+
+      }
+      console.log('vvvaibahw11111111111', this.message);
+
+    })
+
   }
+
+  // this.messageEvent.emit(this.mergeNote)
+  // this.markNote=[item,...this.selectNote]
+  // console.log('event', $event);
+
+  // this.notesId = Id
+  // // console.log('item ',item);
+  // console.log('111111111 ', this.markEnable);
+  // this.markEnable = true;
+  // console.log('222222222 ', this.markEnable);
+  // return 'matcard-border'
+}
+
   // unMark(Id) {
   //   console.log('vvvvv', Id);
 
@@ -322,5 +343,5 @@ export class AllNotesComponent implements OnInit {
   //   // console.log('');
 
   // }
-}
+
 

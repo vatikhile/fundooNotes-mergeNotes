@@ -21,8 +21,8 @@ import { MatSnackBar } from '@angular/material';
 export class DashboardComponent implements OnInit {
   private flag: boolean = false;
   toggle: boolean = true;
-  isMerge:boolean=false;
-  addNotes:Notes = new Notes();
+  isMerge: boolean = true;
+  addNotes: Notes = new Notes();
   // labelNote: Label = new Label();
   // list: boolean = true;
   // grid: boolean=false;
@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
   // mergeNote:any[]=[];
   message: any;
   header: string;
-  selectedLabel:any;
+  selectedLabel: any;
   searchContent: any;
   firstName = localStorage.getItem('firstName');
   email = localStorage.getItem('email');
@@ -38,8 +38,11 @@ export class DashboardComponent implements OnInit {
   profilImaage = localStorage.getItem('profilPic');
   values: string;
   profil: string;
-message1:any;
-  constructor(private dialog: MatDialog, private search: SearchService, private snackbar:MatSnackBar, private noteService: NoteServiceService, private dataService: UpdateServiceService, private view: ViewService, private route: Router) { }
+  message1: any;
+  constructor(private dialog: MatDialog, private search: SearchService,
+    private snackbar: MatSnackBar, private noteService: NoteServiceService,
+    private dataService: UpdateServiceService, private view: ViewService,
+    private route: Router) { }
   img = environment.url + this.profilImaage;
 
   ngOnInit() {
@@ -47,18 +50,21 @@ message1:any;
     /*****
    @purpose:After Open the dashboard it display the set profile image of owner on the toolbar button without refresh the page
    ******/
-    this.profil=localStorage.getItem('profilePic');
-    
-    
+    console.log("dsesesesse", this.message1);
+
+    this.profil = localStorage.getItem('profilePic');
+
+
     /*****
    @purpose:After Open the dashboard it display all labels on the sidenavbar under the label without refresh 
    ******/
     this.showLabel();
     this.sidenavUpdateLabel();
     this.header = 'fundooNotes';
-    this.dataService.current.subscribe(message1 => this.message1= message1)
-    console.log("vvvvvvvvsssss",this.message1);
-    
+
+    console.log("vvvvvvvvsssss", this.message1);
+    this.mergeNotes();
+
   }
   @Output() count = new EventEmitter();
   /*****
@@ -173,60 +179,78 @@ message1:any;
     this.search.search(this.searchContent)
 
   }
-   /*****
-    @purpose:After click on the close button in the search input field if the input field not contain any text then the close button will be disable,if enter some text then the close button will enable
-       ******/
-  searchc()
-  {
-    this.searchContent=undefined;
+  /*****
+   @purpose:After click on the close button in the search input field if the input field not contain any text then the close button will be disable,if enter some text then the close button will enable
+      ******/
+  searchc() {
+    this.searchContent = undefined;
   }
-  labelOpen(item){
+  labelOpen(item) {
     try {
-      let label =item.label;
-      this.route.navigateByUrl('ShowLabelNotes/'+label);
+      let label = item.label;
+      this.route.navigateByUrl('ShowLabelNotes/' + label);
     } catch (error) {
       console.log('error in   in toolbar');
 
     }
   }
-  mainCartOpen(){
+  mainCartOpen() {
     this.route.navigate(['', 'mainCart']);
   }
-  mergeNotes(){
-    console.log('dasssssss',this.message1);
-    this.isMerge=!this.isMerge;
-  }
-  cancel(){
-    console.log('bbb',this.selectedLabel);
-    
-  }
-  createNote(){
-    this.isMerge=false;
-console.log("tilte",this.addNotes);
-// console.log("description",this.addNotes.description);
-// console.log("color",this.addNotes.color);
-this.noteService.addNote(this.addNotes).subscribe(
-  (response: any) => {
-    this.view.getNotes();
-    console.log(response);
-    // this.dataService.currentMessage;
-    this.dataService.changeMessage('')
-    this.snackbar.open(
-      "Note is created Successfully", "",
-      { duration: 2500 }
-    )
+  mergeNotes() {
+    this.dataService.current.subscribe((message1) => {
+      this.message1 = message1
+      // if(this.message1==''){
+      //  this.isMerge=false
 
-  },
-  (error)=>{
-    console.log("error");
-    this.snackbar.open(
-      "Note is created Successfully", "",
-      { duration: 2500 })
+      // }
+      //  else{
+      //   this.isMerge=true
+
+      //  }
+    })
+    console.log('dasssssss', this.message1);
+    this.isMerge = !this.isMerge;
+
   }
+  cancel() {
+    console.log('bbb', this.selectedLabel);
+    this.isMerge = false
+
+  }
+  createNote() {
+    this.isMerge = false;
+    // this.message1='';
+    console.log("tilte", this.addNotes);
+    // console.log("description",this.addNotes.description);
+    // console.log("color",this.addNotes.color);
+
+    this.noteService.addNote(this.addNotes).subscribe(
+      (response: any) => {
+        this.view.getNotes();
+        console.log(response);
+        // this.dataService.currentMessage;
+        this.dataService.changeMessage('')
+        this.snackbar.open(
+          "Note is created Successfully", "",
+          { duration: 2500 }
+        )
+        this.message1 = null
+        console.log("ffff", this.message1);
+
+      },
+      (error) => {
+        console.log("error");
+        this.snackbar.open(
+          "Note is created Successfully", "",
+          { duration: 2500 })
+      }
     )
-    this.addNotes=null;
-    this.isMerge=false;
-}
+    // this.addNotes = null;
+    this.isMerge = false;
+    this.dataService.noteData(null)
+
+  }
 
 }
 

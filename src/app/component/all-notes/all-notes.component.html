@@ -12,8 +12,7 @@
             fxFlex="88" class="ssf6">
             <div class="122" [ngClass]=" direction =='column' ? 'matpad3':'matpad'">
 
-              <mat-card [ngStyle]="{ 'background-color': items.color }"
-                [class.isSelcted]="items.markEnable" >
+              <mat-card [ngStyle]="{ 'background-color': items.color }" [class.isSelcted]="items.markEnable">
                 <div *ngIf="!items.markEnable " class="check-Mark"><button mat-icon-button matTooltip='Select Note'
                     (click)="mark(items)">
                     <mat-icon><img src='../../../assets/check-circular-button.svg'></mat-icon>

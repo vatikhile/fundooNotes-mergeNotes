@@ -53,14 +53,15 @@
               <button mat-icon-button (click)="mainCartOpen()">
                 <mat-icon>shopping_cart</mat-icon>
               </button>
-              <button fxFlex="100px" mat-flat-button (click)="mergeNotes()" color="accent" fxLayout="row"
-                fxLayoutAlign="center center" >Merge Notes </button>
+              <button fxFlex="100px" *ngIf="message1!=''" mat-flat-button (click)="mergeNotes()" color="accent"
+                fxLayout="row" fxLayoutAlign="center center">Merge Notes </button>
             </div>
             <!-- <div> </div> -->
           </div>
         </div>
         <div fxLayout="column" fxLayoutAlign="center end">
-          <button style="outline: none;" mat-icon-button [matMenuTriggerFor]="menu">
+          <button style="outline: none;" mat-icon-button [matMenuTriggerFor]="menu"
+            [class.button-allign]="message1==''">
             <div mat-card-avatar
               [ngStyle]="{'background-image': 'url('+img+')','background-size':'cover', 'height':'40px','width':'40px'}"
               class="img1"></div>
@@ -184,7 +185,7 @@
   </mat-menu>
 </div>
 
-<div fxLayout="column" fxLayoutAlign="start end" fxFlex="100" *ngIf="isMerge==true">
+<div fxLayout="column" fxLayoutAlign="start end" fxFlex="100" *ngIf="isMerge==true && message1!=''">
   <mat-card class="menu">
     <div fxLayout="row" fxLayoutAlign="start">
       {{message1.length}} Note Merging
@@ -242,31 +243,28 @@
           <mat-form-field>
             <mat-label>select color</mat-label>
             <mat-select [(value)]="addNotes.color">
-              <mat-option *ngFor="let item3 of message1" [value]="item3.color"
-                style="background-color: '#item3.color'">
+              <mat-option *ngFor="let item3 of message1" [value]="item3.color" style="background-color: '#item3.color'">
                 {{item3.color}}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile>
-        <!-- <mat-radio-group [(value)]="addNotes.isPined">
+          <!-- <mat-radio-group [(value)]="addNotes.isPined">
             <mat-radio-button [value]="true">Pin</mat-radio-button>
             <mat-radio-button [value]="false">unPin</mat-radio-button>
           </mat-radio-group> -->
           <mat-form-field>
-              <mat-label>pin/unpin</mat-label>
-              <mat-select [(value)]="addNotes.isPined">
-                <mat-option  [value]="true"
-                >
-                 pin
-                </mat-option>
-                <mat-option  [value]="false"
-                >
-                 unPin
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+            <mat-label>pin/unpin</mat-label>
+            <mat-select [(value)]="addNotes.isPined">
+              <mat-option [value]="true">
+                pin
+              </mat-option>
+              <mat-option [value]="false">
+                unPin
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </mat-grid-tile>
       </mat-grid-list>
       <div fxLayout="row">
