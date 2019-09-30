@@ -223,7 +223,7 @@ export class DashboardComponent implements OnInit {
     // this.message1='';
     console.log("tilte", this.addNotes);
     // console.log("description",this.addNotes.description);
-    // console.log("color",this.addNotes.color);
+    console.log("color",this.addNotes);
 
     this.noteService.addNote(this.addNotes).subscribe(
       (response: any) => {

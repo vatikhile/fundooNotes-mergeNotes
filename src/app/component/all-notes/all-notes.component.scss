@@ -1,7 +1,7 @@
 
 .Card{
     display: flex;
-     background-color: white;
+    background-color: white;
 
 }
 .mat-card{
@@ -43,94 +43,65 @@
 .img{
     width: 12px;
 }
-// .pin{
-//     margin-left: 75%;
-//     margin-top: -13%;
-// position: absolute;
-   
 
-// }
 .mat-icon-button{
     outline: none;
     background-color:transparent;
 }
 .mat-card:hover{
     .pin{
-        visibility: visible;
-    }
+    visibility: visible;
+}
     .check-Mark{
-        visibility: visible;
-    }
-    // .unCheck-Mark {
-    //     visibility: visible;
-    // }
-    }
-    .pin
-    {
-        visibility: hidden;
-    }
-    .check-Mark{ 
-        margin-top: -42px;
-        visibility: hidden;
-    }
-    .unCheck-Mark {
-        margin-top: -42px;
-        // visibility: hidden;
-    }
-    .check-Mark img{
-        margin: 8px 0px 0px -74px;
-        // z-index: 39;
-        // position: fixed;
-    // visibility: hidden;
+    visibility: visible;
+}}
+.pin{
+    visibility: hidden;
+}
+.check-Mark{ 
+    margin-top: -42px;
+    visibility: hidden;
+}
+.unCheck-Mark {
+    margin-top: -42px;
+}
+.check-Mark img{
+    margin: 8px 0px 0px -74px;
+
 }
 .unCheck-Mark img{
     margin: 8px 0px 0px -74px;
-    // z-index: 39;
 }
 
 .check-Mark button:focus{
-color: transparent;
+    color: transparent;
 }
 .unCheck-Mark  button:focus{
     color: transparent;
-    }
+}
 
 .isSelcted{
     border: 2px solid black;
 }
-// .check-Mark{
-//     visibility: hidden;
-// }
-// .pin{
-//     color: #5f6268;
-//     // font-weight:inherit;
-//     // font-size: 20px;
-//     font-family: Arial, sans-serif;
-// }
+
 .point{
-  outline: none;
-  border-color: transparent;
-  background-color: transparent;
+    outline: none;
+    border-color: transparent;
+    background-color: transparent;
   
 }
 
 .titl{
     word-wrap:break-word;
     font-size: 20px;
-//   margin-top: -31px;
-
 }
 .titl.thick {
     font-weight: bold;
-  }
-  .pinn{
+}
+.pinn{
     font-size: 13px;
     color: lightblack;
 }
 .que{
     font-size: 14px;
 }
-// .pind{
-//     margin: 90%;
-//     margin-left: 178%;
-// }

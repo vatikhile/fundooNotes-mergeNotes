@@ -153,13 +153,6 @@
         </mat-sidenav>
         <mat-sidenav-content class="content">
           <router-outlet></router-outlet>
-          <!-- <app-add-note></app-add-note>
-            </div>
-       
-              <div>
-              <app-all-notes></app-all-notes>
-            </div>
-            <div><app-archive></app-archive></div> -->
         </mat-sidenav-content>
       </mat-sidenav-container>
     </div>
@@ -192,17 +185,6 @@
     </div>
     <mat-divider></mat-divider>
     <div fxLayout="column" fxLayoutAlign="start">
-      <!-- <input type="file" class="fileSelect" (change)=profileImage($event) #image> -->
-
-      <!-- <mat-grid-tile> -->
-      <!-- <mat-form-field>
-            <mat-label><span>select title</span></mat-label>
-            <mat-select>
-              <mat-option *ngFor="let item of message1"  [value]="item.value">
-                {{item.title}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field> -->
       <mat-grid-list cols="1" rowHeight="2:1">
         <mat-grid-tile>
           <!-- <div> -->
@@ -250,10 +232,6 @@
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile>
-          <!-- <mat-radio-group [(value)]="addNotes.isPined">
-            <mat-radio-button [value]="true">Pin</mat-radio-button>
-            <mat-radio-button [value]="false">unPin</mat-radio-button>
-          </mat-radio-group> -->
           <mat-form-field>
             <mat-label>pin/unpin</mat-label>
             <mat-select [(value)]="addNotes.isPined">
